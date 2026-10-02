@@ -25,11 +25,16 @@ Platform: my own computer (macOS / Windows / Linux: ___). Git version: ___.
 ## 2. Reflection questions
 
 1. Which tasks belong on my own computer, which on Raven, and which on Hyak? 
+
+> My computure is for small computation and quick updates, Raven is for larger computations, and Hyak is for raw sequence data. 
+
 2. One workflow habit I want to make automatic this quarter: 
+
+> I want to start a good organization process and namingconvention to make it easy to find things in the future. 
 
 ## 3. Project progress
 
-Draft project idea (one or two sentences): 
+Draft project idea (one or two sentences): I need to find eDNA data so I can find percentatges of species in a sample. 
 
 ## 4. Where I'm stuck
 
