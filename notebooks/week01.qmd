@@ -71,14 +71,14 @@ still tough choice   2. Reflection questions
 
 <!-- What moved this week, with links to commits, files, or figures. -->
 
-NOt much yet -- but will sooon!
+I am looking for eDNA data that I can use  
 
 ## 4. Where I'm stuck
 
-<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+I am still having trouble getting things to push from R after I commit my new work.  
 
 ## 5. Next week
 
-<!-- One to three concrete, one-week-sized goals. -->
+I want to find a data set that I can use for this quarter.  
 
 - 
