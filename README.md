@@ -1,6 +1,6 @@
-# <Your name> · FISH 546 project
+# Farr · FISH 546 project
 
-> Replace this block. One paragraph: what question you are asking, what data you are using, and what the final figure will show. It will change over the quarter; that is fine.
+> Find the percent of Olympic Mudminnow in an eDNA sample. Data coming from the NWIFC  
 
 **Course:** FISH 546, Bioinformatics for Environmental Sciences, Autumn 2026 · [course site](https://sr320.github.io/course-fish546-2026/) · [my Project Proposal issue](https://github.com/sr320/course-fish546-2026/issues/<number>)
 
