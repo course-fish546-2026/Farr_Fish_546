@@ -42,10 +42,21 @@ pwd
 ```
 
 
+
+
+
+
+
+
+
+
 ```{bash}
-/home/shared/FastQC -0.12.1/fastqc -h
+/home/shared/FastQC-0.12.1/fastqc -h
 ```
 
+```{bash}
+/home/shared/FastQC-0.12.1/fastqc ../data/raw/EPI-209_S29_L004_R1_001.fastq
+```
 
 
 
