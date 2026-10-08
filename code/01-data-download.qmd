@@ -1,0 +1,36 @@
+---
+title: "01-data-download"
+editor: visual
+---
+
+I need data
+
+http://owl.fish.washington.edu/nightingales/P_generosa/EPI-209_S29_L004_R1_001.fastq.gz
+
+
+Load data from internet
+
+```{bash}
+pwd
+cd ../data/raw
+
+curl -O http://owl.fish.washington.edu/nightingales/P_generosa/EPI-209_S29_L004_R1_001.fastq.gz
+
+```
+
+Unzip file
+
+```{bash}
+gunzip ../data/raw/EPI-209_S29_L004_R1_001.fastq.gz
+```
+
+
+
+
+Look at first 10 lines of data
+
+```{bash}
+head ../data/raw/EPI-209_S29_L004_R1_001.fastq
+```
+
+
