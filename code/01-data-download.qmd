@@ -27,7 +27,7 @@ gunzip ../data/raw/EPI-209_S29_L004_R1_001.fastq.gz
 
 
 
-Look at first 10 lines of data
+Look at first 10 lines of data to make sure it looks
 
 ```{bash}
 head ../data/raw/EPI-209_S29_L004_R1_001.fastq
