@@ -3,7 +3,9 @@ title: "01-data-download"
 editor: visual
 ---
 
-I need data
+# Upload Data 
+
+I need data from the internet to raven
 
 http://owl.fish.washington.edu/nightingales/P_generosa/EPI-209_S29_L004_R1_001.fastq.gz
 
@@ -32,5 +34,28 @@ Look at first 10 lines of data to make sure it looks
 ```{bash}
 head ../data/raw/EPI-209_S29_L004_R1_001.fastq
 ```
+
+# Fast QC
+
+```{bash}
+pwd
+```
+
+
+```{bash}
+/home/shared/FastQC -0.12.1/fastqc -h
+```
+
+
+
+
+
+
+
+
+
+
+
+
 
 
