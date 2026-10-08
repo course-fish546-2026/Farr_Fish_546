@@ -14,3 +14,12 @@ data/raw/*
 # OS
 .DS_Store
 Thumbs.db
+
+# sequence files and alignments, wherever they are
+*.fastq.gz
+*.bam
+
+# a whole folder of big intermediate files
+output/week03/alignments/
+
+
