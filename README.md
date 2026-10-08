@@ -27,3 +27,9 @@ By Week 10 I will have: <one sentence>.
 ## Data availability
 
 <Where the raw data live, how they were named, and where the checksums are.>
+
+
+## Tutorial 2 — Raven ✅
+Logged into Raven RStudio Server and cloned my repo.
+Output pushed from Raven: https://github.com/course-fish546-2026/<your-repo>/blob/main/output/hello-raven.png
+
