@@ -4,6 +4,7 @@ author: "<your name>"
 date: today
 ---
 
+```{=html}
 <!--
 Before you push, check:
   [ ] this .qmd AND its rendered .html are both committed
@@ -15,28 +16,28 @@ Before you push, check:
   [ ] the commit link is posted as a comment on your Project Proposal issue
 Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entry-rubric
 -->
+```
+## 1. This week's analysis: Trimming
 
-## 1. This week's analysis: Trimming 
+1.  Commands or code used for read counts and QC.
 
-1. Commands or code used for read counts and QC.
+> curl -O to read in file from a website, gunzip to unzip fastq file, head to look at the first few rows to insepct the data, FastQC-0.12.1/fastqc to run a fastq on the downloaded data file.
 
-2. A small table of samples and read counts.
+2.  A small table of samples and read counts.
 
-3. Before and after QC evidence if trimming was performed.
+    ![](images/sequence%20read.png)
 
-4. The decision paragraph.
+3.  Before and after QC evidence if trimming was performed.
 
-
+4.  The decision paragraph: proceed, trim more, exclude a sample, or investigate.
 
 ## 2. Reflection questions
 
-1. What does a per-base quality plot tell you, and what does it not tell you?
+1.  What does a per-base quality plot tell you, and what does it not tell you?
 
+2.  When is trimming useful, and when might it remove useful information?
 
-2. When is trimming useful, and when might it remove useful information?
-
-
-3. For your project, name the raw input format, the first QC step, and the first downstream analysis step.
+3.  For your project, name the raw input format, the first QC step, and the first downstream analysis step.
 
 ## 3. Project progress
 
@@ -50,4 +51,4 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 <!-- One to three concrete, one-week-sized goals. -->
 
-- 
+-   
