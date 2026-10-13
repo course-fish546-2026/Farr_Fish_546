@@ -1,19 +1,37 @@
 ---
-title: "Untitled"
+title: "eDNA Data Download"
 editor: visual
 ---
 
-Importing my data
+# Importing data
 
 https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1J_S99_R1_001.fastq.gz
 
 
+Get data from website
+
+```{bash}
+cd ../data/raw
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1J_S99_R1_001.fastq.gz
+
+```
 
 
+Unzip fastq file 
+
+```{bash}
+gunzip ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq.gz
+```
 
 
+Check first few lines to make sure data looks good
 
+```{bash}
+head ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
+```
 
+# FastQC
 
 
 

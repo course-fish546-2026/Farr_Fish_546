@@ -43,13 +43,6 @@ pwd
 
 
 
-
-
-
-
-
-
-
 ```{bash}
 /home/shared/FastQC-0.12.1/fastqc -h
 ```
