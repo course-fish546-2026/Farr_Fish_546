@@ -33,6 +33,9 @@ head ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
 
 # FastQC
 
+```{bash}
+/home/shared/FastQC-0.12.1/fastqc ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
+```
 
 
 
