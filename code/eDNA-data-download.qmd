@@ -38,6 +38,11 @@ head ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
 ```
 
 
+#Checksum
+
+```{bash}
+md5sum ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
+```
 
 
 
