@@ -13,7 +13,29 @@ Get data from website
 ```{bash}
 cd ../data/raw
 
-curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1J_S99_R1_001.fastq.gz
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1J_S99_R1_001.fastq.gz 
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5bb_S133_R1_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5cc_S134_R2_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1dd_S141_R2_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1cc_S140_R2_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5z_S131_R1_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5z_S131_R2_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1n_S103_R2_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1n_S103_R1_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1f_S92_R2_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1f_S92_R1_001.fastq.gz
+
+curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site1a_S83_R1_001.fastq.gz
 
 ```
 
@@ -21,20 +43,25 @@ curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yel
 Unzip fastq file 
 
 ```{bash}
-gunzip ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq.gz
+
+gunzip ../data/raw/*.gz
+
 ```
 
 
-Check first few lines to make sure data looks good
+# Check first few lines to make sure data looks good
 
 ```{bash}
-head ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
+head ../data/raw/*.fastq
 ```
+
+
 
 # FastQC
 
 ```{bash}
-/home/shared/FastQC-0.12.1/fastqc ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
+/home/shared/FastQC-0.12.1/fastqc ../data/raw/*.fastq \
+-o ../output/eDNA_fastq
 ```
 
 
