@@ -1,7 +1,7 @@
 ---
-title: "Week NN — <topic>"
-author: "<your name>"
-date: today
+title: "Week 02 — FastQC and Trimming"
+author: "Abby"
+date: 05 October 2026
 ---
 
 ```{=html}
@@ -17,6 +17,7 @@ Before you push, check:
 Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entry-rubric
 -->
 ```
+
 ## 1. This week's analysis: Trimming
 
 1.  Commands or code used for read counts and QC.
@@ -31,24 +32,31 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 4.  The decision paragraph: proceed, trim more, exclude a sample, or investigate.
 
+
+
 ## 2. Reflection questions
 
 1.  What does a per-base quality plot tell you, and what does it not tell you?
 
+> A per-base quality plot tells us how 
+
 2.  When is trimming useful, and when might it remove useful information?
+
+> Trimming is useful when 
 
 3.  For your project, name the raw input format, the first QC step, and the first downstream analysis step.
 
+
 ## 3. Project progress
 
-<!-- What moved this week, with links to commits, files, or figures. -->
+> Using eDNA data on nightingales from Yellow Island in 2023. I have uploaded the data into raven and ran a fastQC in it.  
 
 ## 4. Where I'm stuck
 
-<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+> None
 
 ## 5. Next week
 
-<!-- One to three concrete, one-week-sized goals. -->
+> My goal for next week is to assemble the eDNA and make sure any trimming steps are complete.  
 
 -   
