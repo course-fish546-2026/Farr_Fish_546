@@ -68,7 +68,7 @@ head ../data/raw/*.fastq
 #Checksum
 
 ```{bash}
-md5sum ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
+md5sum ../data/raw/*
 ```
 
 
@@ -76,7 +76,7 @@ md5sum ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
 
 
 ```{bash}
-home/shared/MultiQC.v1.12.dev0 ../data/raw/
+home/shared/MultiQC.v1.12.dev0 ../output/eDNA_fastq/*
 ```
 
 
@@ -90,7 +90,7 @@ home/shared/MultiQC.v1.12.dev0 ../data/raw/
 
 ```{bash}
 /home/shared/fastp \
--i ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq \
+-i ../data/raw/* \
 -o ../data/raw/trimmed_yell-july18.fastq
 ```
 
