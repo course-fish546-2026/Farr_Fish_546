@@ -38,11 +38,11 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 1.  What does a per-base quality plot tell you, and what does it not tell you?
 
-> A per-base quality plot tells us how 
+> A per-base quality plot tells us what the quality of the reads are, it can not tell you if there is contaminatin in the read or why a read is poor quality. Even if the read is still good quality there could be something off with the read.
 
 2.  When is trimming useful, and when might it remove useful information?
 
-> Trimming is useful when 
+> Trimming is useful when you have a primer that you need to get rid of or if you have bad quality reads that you do not want to use in your analysis. It might be remove useful information if you trim too much or if you do not know what you are trimming out. 
 
 3.  For your project, name the raw input format, the first QC step, and the first downstream analysis step.
 
