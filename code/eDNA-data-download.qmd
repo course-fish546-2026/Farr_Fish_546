@@ -45,6 +45,38 @@ md5sum ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq
 ```
 
 
+# MultiQC
+
+
+```{bash}
+home/shared/MultiQC.v1.12.dev0 ../data/raw/
+```
+
+
+
+# Trimming 
+
+
+```{bash look at commands}
+/home/shared/fastp -h
+```
+
+```{bash}
+/home/shared/fastp \
+-i ../data/raw/Yell_July18_Site1J_S99_R1_001.fastq \
+-o ../data/raw/trimmed_yell-july18.fastq
+```
+
+
+# FastQC on trimmed file
+
+
+
+```{bash}
+
+/home/shared/FastQC-0.12.1/fastqc ../data/raw/trimmed_yell-july18.fastq
+
+```
 
 
 
