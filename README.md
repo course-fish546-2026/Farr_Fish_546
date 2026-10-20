@@ -6,7 +6,7 @@
 
 ## Endpoint
 
-By Week 10 I will have: <one sentence>.
+By Week 10 I will have a table of different species present in the samples and how many were in each sample. This weeks steps will help me get there by trying to start mapping the sequences in my file to known sequences of species. 
 
 ## Repository map
 
