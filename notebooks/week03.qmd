@@ -1,0 +1,49 @@
+---
+title: "Week NN — <topic>"
+author: "<your name>"
+date: today
+---
+
+<!--
+Before you push, check:
+  [ ] this .qmd AND its rendered .html are both committed
+  [ ] rendered from a clean session (Session > Restart R, then Render)
+  [ ] paths are relative, not absolute: from notebooks/, use ../ (e.g. ../output/weekNN/)
+  [ ] tables and figures are saved under output/weekNN/, not only printed here
+  [ ] nothing under data/raw/ is committed
+  [ ] software, platform, and container/environment are named
+  [ ] the commit link is posted as a comment on your Project Proposal issue
+Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entry-rubric
+-->
+
+## 1. This week's analysis
+
+Week 03 covers the central transformation in many bioinformatics workflows: reads are connected to biological references or assembled into inferred sequences, then summarized into analysis-ready tables.
+
+## 2. Reflection questions
+
+1. What is the difference between mapping reads to a reference and assembling reads without one?
+
+>
+
+2. What intermediate summary would you inspect before trusting a mapping or quantification result?
+
+>
+
+3.What is the smallest meaningful workflow slice you can run for your project this week?
+
+> 
+
+## 3. Project progress
+
+<!-- What moved this week, with links to commits, files, or figures. -->
+
+## 4. Where I'm stuck
+
+<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+
+## 5. Next week
+
+<!-- One to three concrete, one-week-sized goals. -->
+
+- 
