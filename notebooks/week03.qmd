@@ -18,7 +18,8 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 ## 1. This week's analysis
 
-Week 03 covers the central transformation in many bioinformatics workflows: reads are connected to biological references or assembled into inferred sequences, then summarized into analysis-ready tables.
+<!-- The week's exercise or your project step: commands, code, outputs, and what they mean.
+     Link the files in output/weekNN/. Name the platform (laptop / Raven / Klone) and software versions. -->
 
 ## 2. Reflection questions
 
