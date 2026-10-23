@@ -1,7 +1,7 @@
 ---
-title: "Week NN — <topic>"
-author: "<your name>"
-date: today
+title: "Week 03 — Mapping"
+author: "Abby Farr"
+date: 22 October 2023
 ---
 
 <!--
@@ -18,33 +18,61 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 ## 1. This week's analysis
 
-<!-- The week's exercise or your project step: commands, code, outputs, and what they mean.
-     Link the files in output/weekNN/. Name the platform (laptop / Raven / Klone) and software versions. -->
+```{bash}
+
+mkdir -p ../output/03.2-eDNA # create a file directory 
+cd ../output/03.2-eDNA # set working directory
+
+raw=$(realpath ../../data/raw/eDNA-yellow_island-2023) # Assign pathway to a varbale name
+
+# manifest: sample name, R1 path, R2 path
+printf "sample-id\tforward-absolute-filepath\treverse-absolute-filepath\n" > manifest.tsv
+
+for sample in Site1a_S83 Site1b_S84 Site1c_S85 Site5a_S87 Site5b_S88 Site5c_S89; do #list of samples
+  printf "%s\t%s\t%s\n" \
+    "$sample" \
+    "${raw}/Yell_July18_${sample}_R1_001.fastq.gz" \
+    "${raw}/Yell_July18_${sample}_R2_001.fastq.gz" >> manifest.tsv
+done
+
+# metadata: sample name, site
+printf "sample-id\tsite\n"          > sample-metadata.tsv
+printf "Site1a_S83\tSite1\n"       >> sample-metadata.tsv
+printf "Site1b_S84\tSite1\n"       >> sample-metadata.tsv
+printf "Site1c_S85\tSite1\n"       >> sample-metadata.tsv
+printf "Site5a_S87\tSite5\n"       >> sample-metadata.tsv
+printf "Site5b_S88\tSite5\n"       >> sample-metadata.tsv
+printf "Site5c_S89\tSite5\n"       >> sample-metadata.tsv
+
+cat manifest.tsv
+cat sample-metadata.tsv
+
+```
 
 ## 2. Reflection questions
 
 1. What is the difference between mapping reads to a reference and assembling reads without one?
 
->
+> Mapping is when there is already a genome for a species and you are just comparing your read to the exhisting read. In assembly reads are assembled into longer strings when there is no existing genome to try and reconstruct the sequences.  
 
 2. What intermediate summary would you inspect before trusting a mapping or quantification result?
 
->
+> I would look at check sums and run the head function to make sure the first few rows of the data look right.  
 
 3.What is the smallest meaningful workflow slice you can run for your project this week?
 
-> 
+> I can run 6 sites through the trimming process and then start working on the manifest to make sure all of the code is running correctly. Once it is running then I can add in the rest of the sites as well as start running QIIM.  
 
 ## 3. Project progress
 
-<!-- What moved this week, with links to commits, files, or figures. -->
+> Working on creating the manefest for each site and then check the read quality and remove the primers.  
 
 ## 4. Where I'm stuck
 
-<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+> na
 
 ## 5. Next week
 
-<!-- One to three concrete, one-week-sized goals. -->
+> My goeal for next week is to remove the primers and clean up the reads. 
 
 - 
