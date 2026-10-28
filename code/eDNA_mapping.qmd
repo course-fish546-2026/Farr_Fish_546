@@ -1,0 +1,57 @@
+---
+title: "eDNA_mapping"
+editor: visual
+---
+
+
+Create manifest so QIIME knows where the reads are
+
+```{bash}
+mkdir -p ../output/eDNA_mapping
+cd ../output/eDNA_mapping
+
+raw=$(realpath ../../data/raw/eDNA_yell_2023)
+
+# manifest: sample name, R1 path, R2 path
+printf "sample-id\tforward-absolute-filepath\treverse-absolute-filepath\n" > manifest.tsv
+
+
+for sample in Site1J_s99 Site1L_S101 Site1U_114 Site1a_S83 Site1aa_S130 Site1b_S84 Site1bb_S139 Site1c_S85 Site1cc_S140 Site1d_S86 Site1dd_S141 Site1e_S91 Site1ee_S142 Site1f_S92 Site1g_S93 Site1h_S94 Site1k_S100 Site1m_S102 Site1n_S103 Site1o_S104 Site1p_S105 Site1q_S106 Site1r_S111 Site1s_S112 Site1t_S113 Site1v_S117 Site1w_S118 Site1x_S119 Site1y_S120 Site1z_S129 Site5J_S107 Site5L_S109 Site5a_S87 Site5aa_S132 Site5b_88 Site5bb_S133 Site5c_S89 Site5cc_S134 Site5d_S90 Site5dd_S135 Site5e_S95 Site5ee_S136 Site5f_S96 Site5ff_S137 Site5g_S97 Site5gg_S138 Site5h_S98 Site5k_S108 Site5m_S110 Site5n_S115 Site5o_S116 Site5p_S121 Site5q_S122 Site5r_S123 Site5s_S124 Site5t_S125 Site5u_S126 Site5v_S127 Site5w_S128 Site5z_S131; do
+  printf "%s\t%s\t%s\n" \
+    "$sample" \
+    "${raw}/Yell_July18_${sample}_R1_001.fastq.gz" \
+    "${raw}/Yell_July18_${sample}_R2_001.fastq.gz" >> manifest.tsv
+done
+
+# metadata: sample name, site
+printf "sample-id\tsite\n"          > sample-metadata.tsv
+printf "Site1a_S83\tSite1\n"       >> sample-metadata.tsv
+printf "Site1b_S84\tSite1\n"       >> sample-metadata.tsv
+printf "Site1c_S85\tSite1\n"       >> sample-metadata.tsv
+printf "Site5a_S87\tSite5\n"       >> sample-metadata.tsv
+printf "Site5b_S88\tSite5\n"       >> sample-metadata.tsv
+printf "Site5c_S89\tSite5\n"       >> sample-metadata.tsv
+
+cat manifest.tsv
+cat sample-metadata.tsv
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
