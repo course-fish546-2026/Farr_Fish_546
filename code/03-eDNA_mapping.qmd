@@ -155,6 +155,9 @@ qiime cutadapt trim-paired \
 
 
 
+
+Clean up the reads with DADA2
+
 ```{bash}
 source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
 conda activate qiime2-2026.7
