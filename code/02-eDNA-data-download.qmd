@@ -236,8 +236,6 @@ curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yel
 
 curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5s_S124_R2_001.fastq.gz
 
-curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5t_S125_R1_001.fastq.gz
-
 curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5u_S126_R1_001.fastq.gz
 
 curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yell_July18_Site5u_S126_R2_001.fastq.gz
