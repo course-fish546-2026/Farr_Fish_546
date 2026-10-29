@@ -128,8 +128,6 @@ qiime demux summarize \
 
 # Remove primers
 
-Each sample was sequenced with two markers mixed together (18S V9 and COI). cutadapt finds the reads that start with the V9 primers, cuts the primers off, and throws away everything else (the COI reads).
-
 --p-front-f: the primer at the start of R1. ^ means “at the very start of the read”
 --p-front-r: the primer at the start of R2
 The part after ... is the other primer, flipped (reverse complement). The V9 region is short, so a read often runs past the end of it into the other primer. When that happens, cutadapt cuts off that primer and everything after it. ;optional means the read is kept even if this second primer isn’t there
@@ -157,7 +155,34 @@ qiime cutadapt trim-paired \
 
 
 
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
 
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs V9-demux.qza \
+  --p-trunc-len-f 0 \
+  --p-trunc-len-r 0 \
+  --p-n-threads 16 \
+  --o-table V9-table.qza \
+  --o-representative-sequences V9-rep-seqs.qza \
+  --o-denoising-stats V9-dada2-stats.qza \
+  --o-base-transition-stats V9-dada2-error-model.qza
+```
+
+
+Turn the DADA2 stats into a report you can view. It shows how many reads were kept at each step (input → filtered → denoised → merged → non-chimeric).
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime metadata tabulate \
+  --m-input-file V9-dada2-stats.qza \
+  --o-visualization V9-dada2-stats.qzv
+```
 
 
 
