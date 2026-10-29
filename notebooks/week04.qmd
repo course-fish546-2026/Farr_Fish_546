@@ -129,9 +129,12 @@ write.csv(res_df, "output/week04/dge-results.csv", row.names = FALSE)
 ```
 
 
+> postive log fold change means there are higher reads for infected crabs and a negative log fold change means there are higher reads for uninfectd crabs. 
 
 
+Write a caveats paragraph about design, sample size, and biological interpretation.
 
+> Some caveats to this is that in a sample site you are more likely to get crabs in the same category than in both categories. Crabs live in close proximity to each other so and infected crab is more likey to get crabs in the vacinity infected. Another cavaet is that there were only four sites samples so it is hard to tell if there was a wide variety of crabs sampled.  
 
 
 
@@ -141,7 +144,7 @@ write.csv(res_df, "output/week04/dge-results.csv", row.names = FALSE)
 
 1. Why is sample metadata as important as the count matrix?
 
-> 
+> Count matrix tells us what we need to know about the read, like what type of read it is (ex:RNA or eDNA) along with how mny sequences are in that read for that category. The sample matrix is just as important because it provides context for where these reads come from and why they could be useful.  
 
 2. What is the difference between statistical significance and biological importance in differential expression?
 

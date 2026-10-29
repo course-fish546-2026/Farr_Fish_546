@@ -9,7 +9,7 @@ WHAT WAS CHANGED\
 
 **Metadata row:** I’m adding `Site1f_S92` → `Site1`. It’s in the manifest but was missing from `sample-metadata.tsv`, which would make later QIIME steps that use the metadata fail.
 
-Create manifest so QIIME knows where the reads are
+# Create manifest so QIIME knows where the reads are
 
 ```{bash}
 mkdir -p ../output/eDNA_mapping
@@ -98,7 +98,7 @@ cat sample-metadata.tsv
 
 
 
-Import reads onto QIIM 2
+# Import reads onto QIIM 2
 
 ```{bash}
 source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
@@ -113,8 +113,47 @@ qiime tools import \
 ```
 
 
+# Check read quality
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime demux summarize \
+  --i-data demux.qza \
+  --o-visualization demux.qzv
+```
 
 
+# Remove primers
+
+Each sample was sequenced with two markers mixed together (18S V9 and COI). cutadapt finds the reads that start with the V9 primers, cuts the primers off, and throws away everything else (the COI reads).
+
+--p-front-f: the primer at the start of R1. ^ means “at the very start of the read”
+--p-front-r: the primer at the start of R2
+The part after ... is the other primer, flipped (reverse complement). The V9 region is short, so a read often runs past the end of it into the other primer. When that happens, cutadapt cuts off that primer and everything after it. ;optional means the read is kept even if this second primer isn’t there
+--p-discard-untrimmed: throw away reads without the V9 primers
+--p-nextseq-trim 20: trim low-quality bases from the read ends (a fix for the NextSeq sequencer)
+--p-minimum-length 50: drop reads shorter than 50 bases after trimming
+
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime cutadapt trim-paired \
+  --i-demultiplexed-sequences demux.qza \
+  --p-front-f "^GTACACACCGCCCGTC...GTAGGTGAACCTGCAGAAGGATCA;optional" \
+  --p-front-r "^TGATCCTTCTGCAGGTTCACCTAC...GACGGGCGGTGTGTAC;optional" \
+  --p-discard-untrimmed \
+  --p-nextseq-trim 20 \
+  --p-minimum-length 50 \
+  --p-cores 8 \
+  --o-trimmed-sequences V9-demux.qza \
+  --o-stats V9-cutadapt-stats.qza
+```
 
 
 
