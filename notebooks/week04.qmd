@@ -111,7 +111,7 @@ sum(res$padj < 0.05, na.rm = TRUE)   # number of significant transcripts
 ```
 
 
-> Out of 38,411 reads 1,166 significantly differentially expressed genes (DEGs) using a threshold of padj < 0.05.
+> Out of 38,411 reads, 1,166 were significantly differentially expressed (p-value = 0.05). In LFC up 1,050 reads have higher expression when compared to the control. In LFC down 116 reads have lower expression when compared to the control. There are 0 outlier reads and 17,872 reads were cut from the counts becuase they had less than 10 reads.
 
 
 PLot and save results
