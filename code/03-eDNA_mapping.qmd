@@ -3,6 +3,12 @@ title: "eDNA_mapping"
 editor: visual
 ---
 
+WHAT WAS CHANGED\
+\
+**Read path, line 13:** `data/raw/eDNA_yell_2023` becomes `data/raw`. The 02 notebook downloads the reads straight into `data/raw/`, so the manifest was pointing at files that don’t exist, and `qiime tools import` failed.
+
+**Metadata row:** I’m adding `Site1f_S92` → `Site1`. It’s in the manifest but was missing from `sample-metadata.tsv`, which would make later QIIME steps that use the metadata fail.
+
 Create manifest so QIIME knows where the reads are
 
 ```{bash}
