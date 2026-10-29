@@ -3,7 +3,6 @@ title: "eDNA_mapping"
 editor: visual
 ---
 
-
 Create manifest so QIIME knows where the reads are
 
 ```{bash}
@@ -92,9 +91,7 @@ cat manifest.tsv
 cat sample-metadata.tsv
 ```
 
-
-
-Import reads onto QIIM 2  
+Import reads onto QIIM 2
 
 ```{bash}
 source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
@@ -107,20 +104,3 @@ qiime tools import \
   --input-format PairedEndFastqManifestPhred33V2 \
   --output-path demux.qza
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -258,9 +258,6 @@ curl -O https://owl.fish.washington.edu/nightingales/eDNA-yellow_island-2023/Yel
 
 ```
 
-
-
-
 Unzip fastq file
 
 ```{bash}
@@ -302,7 +299,6 @@ home/shared/MultiQC.v1.12.dev0 ../output/eDNA_fastq/*
 
 ```
 
-
 ```{bash}
 /home/shared/fastp \
 -f 15 \
@@ -317,4 +313,3 @@ home/shared/MultiQC.v1.12.dev0 ../output/eDNA_fastq/*
 /home/shared/FastQC-0.12.1/fastqc ../output/eDNA_trimmed_fastq/yellow_island.fastq
 
 ```
-
