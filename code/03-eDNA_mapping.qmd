@@ -10,7 +10,7 @@ Create manifest so QIIME knows where the reads are
 mkdir -p ../output/eDNA_mapping
 cd ../output/eDNA_mapping
 
-raw=$(realpath ../../data/raw/eDNA_yell_2023)
+raw=$(realpath ../../data/raw)
 
 # manifest: sample name, R1 path, R2 path
 printf "sample-id\tforward-absolute-filepath\treverse-absolute-filepath\n" > manifest.tsv
@@ -39,6 +39,7 @@ printf "Site1d_S86\tSite1\n"       >> sample-metadata.tsv
 printf "Site1dd_S141\tSite1\n"       >> sample-metadata.tsv
 printf "Site1e_S91\tSite1\n"       >> sample-metadata.tsv
 printf "Site1ee_S142\tSite1\n"       >> sample-metadata.tsv
+printf "Site1f_S92\tSite1\n"       >> sample-metadata.tsv
 printf "Site1g_S93\tSite1\n"       >> sample-metadata.tsv
 printf "Site1h_S94\tSite1\n"       >> sample-metadata.tsv
 printf "Site1k_S100\tSite1\n"       >> sample-metadata.tsv
