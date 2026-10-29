@@ -16,7 +16,7 @@ raw=$(realpath ../../data/raw/eDNA_yell_2023)
 printf "sample-id\tforward-absolute-filepath\treverse-absolute-filepath\n" > manifest.tsv
 
 
-for sample in Site1J_s99 Site1L_S101 Site1U_114 Site1a_S83 Site1aa_S130 Site1b_S84 Site1bb_S139 Site1c_S85 Site1cc_S140 Site1d_S86 Site1dd_S141 Site1e_S91 Site1ee_S142 Site1f_S92 Site1g_S93 Site1h_S94 Site1k_S100 Site1m_S102 Site1n_S103 Site1o_S104 Site1p_S105 Site1q_S106 Site1r_S111 Site1s_S112 Site1t_S113 Site1v_S117 Site1w_S118 Site1x_S119 Site1y_S120 Site1z_S129 Site5J_S107 Site5L_S109 Site5a_S87 Site5aa_S132 Site5b_88 Site5bb_S133 Site5c_S89 Site5cc_S134 Site5d_S90 Site5dd_S135 Site5e_S95 Site5ee_S136 Site5f_S96 Site5ff_S137 Site5g_S97 Site5gg_S138 Site5h_S98 Site5k_S108 Site5m_S110 Site5n_S115 Site5o_S116 Site5p_S121 Site5q_S122 Site5r_S123 Site5s_S124 Site5t_S125 Site5u_S126 Site5v_S127 Site5w_S128 Site5z_S131; do
+for sample in Site1J_S99 Site1L_S101 Site1U_S114 Site1a_S83 Site1aa_S130 Site1b_S84 Site1bb_S139 Site1c_S85 Site1cc_S140 Site1d_S86 Site1dd_S141 Site1e_S91 Site1ee_S142 Site1f_S92 Site1g_S93 Site1h_S94 Site1k_S100 Site1m_S102 Site1n_S103 Site1o_S104 Site1p_S105 Site1q_S106 Site1r_S111 Site1s_S112 Site1t_S113 Site1v_S117 Site1w_S118 Site1x_S119 Site1y_S120 Site1z_S129 Site5J_S107 Site5L_S109 Site5a_S87 Site5aa_S132 Site5b_S88 Site5bb_S133 Site5c_S89 Site5cc_S134 Site5d_S90 Site5dd_S135 Site5e_S95 Site5ee_S136 Site5f_S96 Site5ff_S137 Site5g_S97 Site5gg_S138 Site5h_S98 Site5k_S108 Site5m_S110 Site5n_S115 Site5o_S116 Site5p_S121 Site5q_S122 Site5r_S123 Site5s_S124 Site5t_S125 Site5u_S126 Site5v_S127 Site5w_S128 Site5z_S131; do
   printf "%s\t%s\t%s\n" \
     "$sample" \
     "${raw}/Yell_July18_${sample}_R1_001.fastq.gz" \
@@ -25,19 +25,97 @@ done
 
 # metadata: sample name, site
 printf "sample-id\tsite\n"          > sample-metadata.tsv
+
+printf "Site1J_S99\tSite1\n"       >> sample-metadata.tsv
+printf "Site1L_S101\tSite1\n"       >> sample-metadata.tsv
+printf "Site1U_S114\tSite1\n"       >> sample-metadata.tsv
 printf "Site1a_S83\tSite1\n"       >> sample-metadata.tsv
+printf "Site1aa_S130\tSite1\n"       >> sample-metadata.tsv
 printf "Site1b_S84\tSite1\n"       >> sample-metadata.tsv
+printf "Site1bb_S139\tSite1\n"       >> sample-metadata.tsv
+printf "Site1cc_S140\tSite1\n"       >> sample-metadata.tsv
 printf "Site1c_S85\tSite1\n"       >> sample-metadata.tsv
+printf "Site1d_S86\tSite1\n"       >> sample-metadata.tsv
+printf "Site1dd_S141\tSite1\n"       >> sample-metadata.tsv
+printf "Site1e_S91\tSite1\n"       >> sample-metadata.tsv
+printf "Site1ee_S142\tSite1\n"       >> sample-metadata.tsv
+printf "Site1g_S93\tSite1\n"       >> sample-metadata.tsv
+printf "Site1h_S94\tSite1\n"       >> sample-metadata.tsv
+printf "Site1k_S100\tSite1\n"       >> sample-metadata.tsv
+printf "Site1m_S102\tSite1\n"       >> sample-metadata.tsv
+printf "Site1n_S103\tSite1\n"       >> sample-metadata.tsv
+printf "Site1o_S104\tSite1\n"       >> sample-metadata.tsv
+printf "Site1p_S105\tSite1\n"       >> sample-metadata.tsv
+printf "Site1q_S106\tSite1\n"       >> sample-metadata.tsv
+printf "Site1r_S111\tSite1\n"       >> sample-metadata.tsv
+printf "Site1s_S112\tSite1\n"       >> sample-metadata.tsv
+printf "Site1t_S113\tSite1\n"       >> sample-metadata.tsv
+printf "Site1v_S117\tSite1\n"       >> sample-metadata.tsv
+printf "Site1w_S118\tSite1\n"       >> sample-metadata.tsv
+printf "Site1x_S119\tSite1\n"       >> sample-metadata.tsv
+printf "Site1y_S120\tSite1\n"       >> sample-metadata.tsv
+printf "Site1z_S129\tSite1\n"       >> sample-metadata.tsv
+printf "Site5J_S107\tSite5\n"       >> sample-metadata.tsv
+printf "Site5L_S109\tSite5\n"       >> sample-metadata.tsv
 printf "Site5a_S87\tSite5\n"       >> sample-metadata.tsv
+printf "Site5aa_S132\tSite5\n"       >> sample-metadata.tsv
 printf "Site5b_S88\tSite5\n"       >> sample-metadata.tsv
+printf "Site5bb_S133\tSite5\n"       >> sample-metadata.tsv
 printf "Site5c_S89\tSite5\n"       >> sample-metadata.tsv
+printf "Site5cc_S134\tSite5\n"       >> sample-metadata.tsv
+printf "Site5d_S90\tSite5\n"       >> sample-metadata.tsv
+printf "Site5dd_S135\tSite5\n"       >> sample-metadata.tsv
+printf "Site5e_S95\tSite5\n"       >> sample-metadata.tsv
+printf "Site5ee_S136\tSite5\n"       >> sample-metadata.tsv
+printf "Site5f_S96\tSite5\n"       >> sample-metadata.tsv
+printf "Site5ff_S137\tSite5\n"       >> sample-metadata.tsv
+printf "Site5g_S97\tSite5\n"       >> sample-metadata.tsv
+printf "Site5gg_S138\tSite5\n"       >> sample-metadata.tsv
+printf "Site5h_S98\tSite5\n"       >> sample-metadata.tsv
+printf "Site5k_S108\tSite5\n"       >> sample-metadata.tsv
+printf "Site5m_S110\tSite5\n"       >> sample-metadata.tsv
+printf "Site5n_S115\tSite5\n"       >> sample-metadata.tsv
+printf "Site5o_S116\tSite5\n"       >> sample-metadata.tsv
+printf "Site5p_S121\tSite5\n"       >> sample-metadata.tsv
+printf "Site5q_S122\tSite5\n"       >> sample-metadata.tsv
+printf "Site5r_S123\tSite5\n"       >> sample-metadata.tsv
+printf "Site5s_S124\tSite5\n"       >> sample-metadata.tsv
+printf "Site5t_S125\tSite5\n"       >> sample-metadata.tsv
+printf "Site5u_S126\tSite5\n"       >> sample-metadata.tsv
+printf "Site5v_S127\tSite5\n"       >> sample-metadata.tsv
+printf "Site5w_S128\tSite5\n"       >> sample-metadata.tsv
+printf "Site5z_S131\tSite5\n"       >> sample-metadata.tsv
+
 
 cat manifest.tsv
 cat sample-metadata.tsv
 ```
 
 
+```{bash}
+head manifest.tsv
+```
 
+
+
+
+
+
+
+
+Import reads onto QIIM 2  
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path manifest.tsv \
+  --input-format PairedEndFastqManifestPhred33V2 \
+  --output-path demux.qza
+```
 
 
 
