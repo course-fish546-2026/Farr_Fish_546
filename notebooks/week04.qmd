@@ -18,8 +18,122 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 ## 1. This week's analysis
 
-<!-- The week's exercise or your project step: commands, code, outputs, and what they mean.
-     Link the files in output/weekNN/. Name the platform (laptop / Raven / Klone) and software versions. -->
+Load in packages
+
+```{r}
+#install.packages("BiocManager")
+#BiocManager::install("DESeq2")
+library(DESeq2)
+```
+
+
+
+
+Load Reads
+
+```{r}
+
+counts_url <- "https://raw.githubusercontent.com/RobertsLab/paper-tanner-crab/master/analyses/kallisto-0812/kallisto-0812.isoform.counts.matrix"
+counts <- read.delim(counts_url, row.names = 1, check.names = FALSE)
+
+# kallisto gives estimated counts with decimals; DESeq2 needs whole numbers
+counts <- round(counts)
+
+dim(counts)   # 78,649 transcripts x 4 samples
+head(counts)
+
+```
+
+
+> Reads are divided into four different catagories, cold_uninfected, cold_infected, warm_uninfected, and warm_infected with counts of how many counts are in each category at each site.  
+
+
+Describe sample
+Each row of the metadata describes one column of the count matrix, in the same order.
+
+```{r}
+coldata <- data.frame(
+  row.names   = colnames(counts),
+  infection   = factor(c("uninfected", "infected", "uninfected", "infected")),
+  temperature = factor(c("cold", "cold", "warm", "warm"))
+)
+coldata
+
+# Stop here if the names don't line up
+stopifnot(all(rownames(coldata) == colnames(counts)))
+```
+
+
+> create count matrix  
+
+
+Build the DESeq2 object
+
+```{r}
+dds <- DESeqDataSetFromMatrix(countData = counts,
+                              colData   = coldata,
+                              design    = ~ infection)
+
+# Levels are alphabetical by default, so "infected" would be the reference.
+# Make "uninfected" the baseline so a positive log2FoldChange means higher in infected crabs.
+dds$infection <- relevel(dds$infection, ref = "uninfected")
+
+# Drop transcripts with almost no reads
+dds <- dds[rowSums(counts(dds)) >= 10, ]
+nrow(dds)
+```
+
+
+> Number of counts left after removing counts with less than 10 reads  
+
+
+Check sample structure
+Do this before testing anything. Do the samples group by infection, by temperature, or by neither?
+
+```{r}
+vsd <- vst(dds, blind = TRUE)
+plotPCA(vsd, intgroup = c("infection", "temperature"))
+```
+
+
+> Infected_cold is further away from the other three categories on PC2 meaning it is more different from the rest of the counts in the category and uninfected war and infected cold oare closer on PC1 than the other two indicating that reads in those categories are more similar. 
+
+
+
+Test for differential expression
+
+```{r}
+dds <- DESeq(dds)
+res <- results(dds, alpha = 0.05)
+
+summary(res)
+sum(res$padj < 0.05, na.rm = TRUE)   # number of significant transcripts
+```
+
+
+> Out of 38,411 reads 1,166 significantly differentially expressed genes (DEGs) using a threshold of padj < 0.05.
+
+
+PLot and save results
+
+```{r}
+plotMA(res, ylim = c(-10, 10), main = "Infected vs uninfected")
+
+res_df <- as.data.frame(res)
+res_df$transcript_id <- rownames(res_df)
+res_df <- res_df[order(res_df$padj), ]
+head(res_df)
+
+dir.create("output/week04", recursive = TRUE, showWarnings = FALSE)
+write.csv(res_df, "output/week04/dge-results.csv", row.names = FALSE)
+```
+
+
+
+
+
+
+
 
 ## 2. Reflection questions
 
@@ -31,11 +145,11 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 2. What is the difference between statistical significance and biological importance in differential expression?
 
->
+> 
 
 3. If your project is not RNA-seq, what is the equivalent of a count matrix and a results table in your workflow?
 
-?
+> 
 
 ## 3. Project progress
 
