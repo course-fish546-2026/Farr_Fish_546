@@ -92,16 +92,6 @@ cat sample-metadata.tsv
 ```
 
 
-```{bash}
-head manifest.tsv
-```
-
-
-
-
-
-
-
 
 Import reads onto QIIM 2  
 
