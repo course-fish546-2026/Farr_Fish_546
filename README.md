@@ -1,6 +1,6 @@
 # Farr · FISH 546 project
 
-> Find the percent of Olympic Mudminnow in an eDNA sample. Data coming from the NWIFC  
+> My project is to find the amount of different species in the Yellow Islands in 2023 by using eDNA. To do this I will use 118 samples of eDNA collected on Yellow Island across 59 sites.  
 
 **Course:** FISH 546, Bioinformatics for Environmental Sciences, Autumn 2026 · [course site](https://sr320.github.io/course-fish546-2026/) · [my Project Proposal issue](https://github.com/sr320/course-fish546-2026/issues/<number>)
 
