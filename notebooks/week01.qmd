@@ -1,6 +1,6 @@
 ---
-title: "Week 01 — <topic>"
-author: "Steven Roberts"
+title: "Week 01 — Blast"
+author: "Abby Farr"
 date: today
 editor: 
   markdown: 
