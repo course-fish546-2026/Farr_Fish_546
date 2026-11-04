@@ -1,7 +1,7 @@
 ---
-title: "Week NN — <topic>"
-author: "<your name>"
-date: today
+title: "Week 05 — Genome Annotations"
+author: "Abby Farr"
+date: 4 November 2026
 ---
 
 <!--
@@ -26,6 +26,9 @@ BiocManager::install(c("Biostrings", "GenomicRanges"))
 ```
 
 
+
+# 1. Download the genome and its annotation
+
 ```{r}
 library(Biostrings)
 library(GenomicRanges)
@@ -47,6 +50,8 @@ genome   # one circular sequence, 16,644 bp
 > width: 16644, name: NC_002980.1  
 
 
+#2. Read the GFF
+
 ```{r}
 gff <- read.delim("data/week05/chinook-mito.gff", header = FALSE, comment.char = "#",
                   col.names = c("seqid", "source", "type", "start", "end",
@@ -60,6 +65,7 @@ features$product[features$type == "D_loop"] <- "control region (D-loop)"
 features[, c("type", "start", "end", "strand", "product")]
 ```
 
+# 3. Turn the features into genomic ranges  
 
 ```{r}
 feat_gr <- GRanges(seqnames = features$seqid,
@@ -72,14 +78,98 @@ as.data.frame(table(feat_gr$type))   # features per type
 ```
 
 
+# 4. Find where the primers land
+
+The reverse primer binds the opposite strand, so search for its reverse complement. *max.mismatch* allows a few differences, because primers are rarely a perfect match to every species.
+
+
+```{r}
+primers <- data.frame(
+  marker  = c("MiFish-U", "Riaz 12S"),
+  forward = c("GTCGGTAAAACTCGTGCCAGC", "ACTGGGATTAGATACCCC"),
+  reverse = c("CATAGTGGGGTATCTAATCCCAGTTTG", "TAGAACAGGCTCCTCTAG")
+)
+
+find_amplicon <- function(fwd, rev, genome, max_mismatch = 2) {
+  f <- matchPattern(DNAString(fwd), genome[[1]], max.mismatch = max_mismatch)
+  r <- matchPattern(reverseComplement(DNAString(rev)), genome[[1]], max.mismatch = max_mismatch)
+  c(start = start(f)[1], end = end(r)[1])
+}
+
+amp <- t(mapply(find_amplicon, primers$forward, primers$reverse,
+                MoreArgs = list(genome = genome)))
+amp_gr <- GRanges(seqnames = acc,
+                  ranges   = IRanges(start = amp[, "start"], end = amp[, "end"]),
+                  marker   = primers$marker)
+amp_gr
+width(amp_gr)   # amplicon length, primers included
+```
+
+
+# 5. Annotate the amplicons with overlaps
+
+
+```{r}
+hits <- findOverlaps(amp_gr, feat_gr)
+
+annotated <- data.frame(
+  marker       = amp_gr$marker[queryHits(hits)],
+  amp_start    = start(amp_gr)[queryHits(hits)],
+  amp_end      = end(amp_gr)[queryHits(hits)],
+  feature_type = feat_gr$type[subjectHits(hits)],
+  product      = feat_gr$product[subjectHits(hits)],
+  feat_start   = start(feat_gr)[subjectHits(hits)],
+  feat_end     = end(feat_gr)[subjectHits(hits)]
+)
+annotated
+write.csv(annotated, "output/week05/amplicon-annotation.csv", row.names = FALSE)
+```
+
+
+
+# 6. Save the amplicons as a BED file
+
+BED is 0-based and excludes the end coordinate, so subtract 1 from each start and leave each end as it is. This one-off shift is the most common coordinate bug in genomics.
+
+```{r}
+bed <- data.frame(chrom = as.character(seqnames(amp_gr)),
+                  start = start(amp_gr) - 1,
+                  end   = end(amp_gr),
+                  name  = amp_gr$marker)
+bed
+write.table(bed, "output/week05/amplicons.bed", sep = "\t", quote = FALSE,
+            row.names = FALSE, col.names = FALSE)
+```
+
+
+
+# What to write
+
+1. The accession and version you used, and the coordinate convention of each file you read or wrote (GFF, BED, GRanges).
+
+
+2. Which gene each amplicon falls in, and how much the two amplicons overlap each other. pintersect(amp_gr[1], amp_gr[2]) will tell you.
+
+
+3. What this does and does not show. For example, a primer site matching this one Chinook genome says nothing about how well the primer matches other salmon species, or other individuals.
+
+
+
+
 
 ## 2. Reflection questions
 
-<!-- The 2–3 questions from this week's lecture page, answered with reasoning. -->
+1.Why do genome build and coordinate convention matter?
 
-1. 
-2. 
-3. 
+>
+
+2. What does an overlap between two genomic features show, and what does it not show?
+
+>
+
+3. What is the clearest current result, diagnostic, or proof-of-work you can show in your mid-quarter update?
+
+>
 
 ## 3. Project progress
 
