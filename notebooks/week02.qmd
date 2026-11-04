@@ -1,6 +1,6 @@
 ---
 title: "Week 02 — FastQC and Trimming"
-author: "Abby"
+author: "Abby Farr"
 date: 05 October 2026
 ---
 
