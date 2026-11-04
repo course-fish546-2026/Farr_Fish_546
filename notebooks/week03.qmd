@@ -73,6 +73,6 @@ cat sample-metadata.tsv
 
 ## 5. Next week
 
-> My goeal for next week is to remove the primers and clean up the reads. 
+> My goal for next week is to remove the primers and clean up the reads. 
 
 - 
