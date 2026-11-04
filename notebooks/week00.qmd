@@ -38,7 +38,7 @@ Draft project idea (one or two sentences): I need to find eDNA data so I can fin
 
 ## 4. Where I'm stuck
 
-None / ___
+None
 
 ## 5. Next week
 
