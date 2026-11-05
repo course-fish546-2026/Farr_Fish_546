@@ -277,10 +277,61 @@ biom convert \
 ```
 
 
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+```
 
 
+```{r Read the table}
+# 1. skip the first comment line
+counts <- read_tsv("../output/eDNA_mapping/V9-table-level5.tsv", skip = 1) # 1. skip the first comment line
+```
 
 
+```{r make barplot}
+
+names(counts)[1] <- "taxon"
+
+# 2. Shorten each name to its last named level
+#    "d__Eukaryota;sgr__Obazoa;dv__Opisthokonta;dvs__Metazoa;c__Arthropoda" -> "Arthropoda"
+counts$taxon <- gsub(";__", "", counts$taxon)        # drop empty levels
+counts$taxon <- sub(".*;", "", counts$taxon)         # keep the last level
+counts$taxon <- sub("^[a-z]+__", "", counts$taxon)   # drop the "c__" prefix
+
+# 3. Make it "long": one row per sample per taxon
+long <- counts %>%
+  pivot_longer(-taxon, names_to = "sample", values_to = "reads")
+
+# 4. Turn read counts into percent of each sample's reads
+long <- long %>%
+  group_by(sample) %>%
+  mutate(percent = 100 * reads / sum(reads)) %>%
+  ungroup()
+
+# 5. Keep the 10 most common groups; lump the rest into "Other"
+top10 <- long %>%
+  group_by(taxon) %>%
+  summarise(total = sum(percent)) %>%
+  slice_max(total, n = 10) %>%
+  pull(taxon)
+
+long$taxon <- ifelse(long$taxon %in% top10, long$taxon, "Other")
+
+# 6. Add the site, taken from the sample name ("Site1a_S83" -> "Site1")
+long$site <- substr(long$sample, 1, 5)
+
+# 7. Plot
+ggplot(long, aes(x = sample, y = percent, fill = taxon)) +
+  geom_col() +
+  facet_wrap(~ site, scales = "free_x") +
+  labs(x = "Sample", y = "Percent of reads", fill = "Group") +
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+```
 
 
 
