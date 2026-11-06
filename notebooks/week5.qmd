@@ -141,46 +141,53 @@ write.table(bed, "output/week05/amplicons.bed", sep = "\t", quote = FALSE,
             row.names = FALSE, col.names = FALSE)
 ```
 
+```{r}
+pintersect(amp_gr[1], amp_gr[2])
+```
+
+
 
 
 # What to write
 
 1. The accession and version you used, and the coordinate convention of each file you read or wrote (GFF, BED, GRanges).
 
+> NC_002980.1 and the file used was GFF.  
 
-2. Which gene each amplicon falls in, and how much the two amplicons overlap each other. pintersect(amp_gr[1], amp_gr[2]) will tell you.
+2. Which gene each amplicon falls in, and how much the two amplicons overlap each other. 
 
+> each gene falls in the NC_002980.1 amplicon and the two amplicons overlap each other with a rang of 1473- 1496.  
 
 3. What this does and does not show. For example, a primer site matching this one Chinook genome says nothing about how well the primer matches other salmon species, or other individuals.
 
-
+> This does not tell the nucleotide sequence or where the genes overlap.  
 
 
 
 ## 2. Reflection questions
 
-1.Why do genome build and coordinate convention matter?
+1.Why does genome build and coordinate convention matter?
 
->
+> Gene build and coordinate convention matter because different sequences coorospond to different genes which code for different funtions. 
 
 2. What does an overlap between two genomic features show, and what does it not show?
 
->
+> Overlap between two genomic features can give insight into what the gene is coding for and how the gene is coded.  
 
 3. What is the clearest current result, diagnostic, or proof-of-work you can show in your mid-quarter update?
 
->
+> The clearest result I can show in my mid-quarter update is a graph of how many species are at each site, I can look at the speceis level or the family level. 
 
 ## 3. Project progress
 
-<!-- What moved this week, with links to commits, files, or figures. -->
+> I have a bargraph of what speceis are at each site
 
 ## 4. Where I'm stuck
 
-<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+>  I am a little stuck on what an annotation is and where in the process this step should be taken.  
 
 ## 5. Next week
 
-<!-- One to three concrete, one-week-sized goals. -->
+> My next step is to annotate the genes
 
 - 
