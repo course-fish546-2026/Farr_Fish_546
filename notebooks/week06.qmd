@@ -75,7 +75,7 @@ colSums(is.na(alt))   # missing genotypes per sample
 ```
 
 
-# Summ each SNP
+# Summerize each SNP
 
 ```{r}
 snps <- data.frame(
@@ -99,7 +99,7 @@ hist(snps$maf, breaks = 20, main = "Minor allele frequency", xlab = "MAF")
 keep <- snps$n_called >= 18 & snps$maf >= 0.05
 nrow(snps)   # before
 sum(keep)    # after
-table(called_18 = snps$n_called >= 18, maf_05 = snps$maf >= 0.05)
+table(called_18 = snps$n_called >= 18, maf_05 = snps$maf >= 0.15)
 ```
 
 # Compare two sites
@@ -125,18 +125,23 @@ sum(filtered$freq_diff > 0.5)
 ```
 
 
+# What to write
 
+1. What the INFO and FORMAT fields in this VCF contain. This file has no QUAL score (.). What does that mean for filtering?
 
+>
 
+2. Your before and after counts, and why the MAF filter removed nothing here.
 
+> Before filtering I had 213 counts and after filtering I had 194 counts. The minor allele frequency filter did not remove any counts becuase the minimum MAF was 0.05 which means when we filtered for anything 0.05 and above all counts met that threshold. 
 
+3. Change one threshold (for example n_called >= 20, or maf >= 0.2) and report how the counts and the number of strongly different SNPs change.
 
+> I changed the MAF threshold to 1.5 and 6 counts were removed from the analysis and there were 27 strongly different SNPs.  
 
+4. A caveats paragraph. With 10 plants per site, how much would you trust a single SNP’s frequency difference? What would you need before calling a SNP a sign of local adaptation?
 
-
-
-
-
+>
 
 
 
