@@ -3,6 +3,10 @@ title: "eDNA_annotation"
 editor: visual
 ---
 
+```{r}
+library(Biostrings)
+library(GenomicRanges)
+```
 
 
 
