@@ -125,11 +125,13 @@ sum(filtered$freq_diff > 0.5)
 ```
 
 
+
+
 # What to write
 
 1. What the INFO and FORMAT fields in this VCF contain. This file has no QUAL score (.). What does that mean for filtering?
 
->
+> The info field in a VCF contains metadata describing the variants while the formant field in a VCF contains the genotype, read depth, genotye quality and allelic depth. If the file has no quality score then that means they have no read depth and are removed from the sample.  
 
 2. Your before and after counts, and why the MAF filter removed nothing here.
 
@@ -141,7 +143,7 @@ sum(filtered$freq_diff > 0.5)
 
 4. A caveats paragraph. With 10 plants per site, how much would you trust a single SNP’s frequency difference? What would you need before calling a SNP a sign of local adaptation?
 
->
+> 10 sites does not a provide a lot of information and if there is only one SNP at a location that is not strong evidence to indicate a difference, especially if some reads are filetered out during the different steps. You would need multiple SNPs across a large amount of samples to have confidence of local adaptation.  
 
 
 
@@ -150,11 +152,11 @@ sum(filtered$freq_diff > 0.5)
 
 1. What does a variant call represent?
 
-> A variant call represents a file that stores gene sequence variations and identifies changes in sequenced genome compared to the reference genome 
+> A variant call represents a file that stores gene sequence variations and identifies changes in sequenced genome compared to the reference genome. 
 
 2. How can read depth, genotype quality, or filtering thresholds change a biological interpretation?
 
->
+> These three things can change a biological interpretation because depending on where you put the threshold for filtering or how good the reads are you could be losing data that is important for the confidence in identification or inversly you could be allowing bad reads to be in the data giving false confidence in species identification.  
 
 3. What is your strongest current project output, and what is the riskiest step remaining?
 
@@ -165,14 +167,14 @@ sum(filtered$freq_diff > 0.5)
 
 ## 3. Project progress
 
-<!-- What moved this week, with links to commits, files, or figures. -->
+> I have not done any work this week, I started looking into doing an annotation but since we do not do that I am moving on.  
 
 ## 4. Where I'm stuck
 
-<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+> na  
 
 ## 5. Next week
 
-<!-- One to three concrete, one-week-sized goals. -->
+> This week I want to look at what species are present at the sites.  
 
 - 
