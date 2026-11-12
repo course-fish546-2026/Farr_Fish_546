@@ -137,7 +137,7 @@ sum(filtered$freq_diff > 0.5)
 
 3. Change one threshold (for example n_called >= 20, or maf >= 0.2) and report how the counts and the number of strongly different SNPs change.
 
-> I changed the MAF threshold to 1.5 and 6 counts were removed from the analysis and there were 27 strongly different SNPs.  
+> I changed the MAF threshold to 1.5 and 6 counts were removed from the analysis and there were 27 strongly different SNPs.   
 
 4. A caveats paragraph. With 10 plants per site, how much would you trust a single SNP’s frequency difference? What would you need before calling a SNP a sign of local adaptation?
 
@@ -150,7 +150,7 @@ sum(filtered$freq_diff > 0.5)
 
 1. What does a variant call represent?
 
->
+> A variant call represents a file that stores gene sequence variations and identifies changes in sequenced genome compared to the reference genome 
 
 2. How can read depth, genotype quality, or filtering thresholds change a biological interpretation?
 
@@ -158,7 +158,7 @@ sum(filtered$freq_diff > 0.5)
 
 3. What is your strongest current project output, and what is the riskiest step remaining?
 
->
+> The strongest output I currently have for my project is a bar graph with percent of species at each site. The riskiest step remaining is turning that infomration into a diversity index for each site.  
 
 
 

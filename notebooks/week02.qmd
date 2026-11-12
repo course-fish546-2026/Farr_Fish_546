@@ -17,7 +17,6 @@ Before you push, check:
 Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entry-rubric
 -->
 ```
-
 ## 1. This week's analysis: Trimming
 
 1.  Commands or code used for read counts and QC.
@@ -30,13 +29,11 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 3.  Before and after QC evidence if trimming was performed.
 
-> My QC looked very similar after trimming was performed to how it looked after trimmming was performed. This could be due to the low read size.  
+> My QC looked very similar after trimming was performed to how it looked after trimmming was performed. This could be due to the low read size.
 
 4.  The decision paragraph: proceed, trim more, exclude a sample, or investigate.
 
-> When looking at the initial QC there were quality reads below 20 which was in the red and when looking at the per base sequence counts were highly variable. I used the fastp code to trim the sequence, after that the QC report was relatively the same as before. This led us to look at the total sequence count which was low.  
-
-
+> When looking at the initial QC there were quality reads below 20 which was in the red and when looking at the per base sequence counts were highly variable. I used the fastp code to trim the sequence, after that the QC report was relatively the same as before. This led us to look at the total sequence count which was low.
 
 ## 2. Reflection questions
 
@@ -46,16 +43,15 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 2.  When is trimming useful, and when might it remove useful information?
 
-> Trimming is useful when you have a primer that you need to get rid of or if you have bad quality reads that you do not want to use in your analysis. It might be remove useful information if you trim too much or if you do not know what you are trimming out. 
+> Trimming is useful when you have a primer that you need to get rid of or if you have bad quality reads that you do not want to use in your analysis. It might be remove useful information if you trim too much or if you do not know what you are trimming out.
 
 3.  For your project, name the raw input format, the first QC step, and the first downstream analysis step.
 
 > The raw input formats for my data are fastq files from the nightingale server, the first QC step is to run a fast qc report and then trim sequences that are poor quality or basebairs that are not consistant with the rest of the sequence.
 
-
 ## 3. Project progress
 
-> Using eDNA data on nightingales from Yellow Island in 2023. I have uploaded the data into raven and ran a fastQC in it.  
+> Using eDNA data on nightingales from Yellow Island in 2023. I have uploaded the data into raven and ran a fastQC in it.
 
 ## 4. Where I'm stuck
 
@@ -63,6 +59,6 @@ Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entr
 
 ## 5. Next week
 
-> My goal for next week is to assemble the eDNA and make sure any trimming steps are complete.  
+> My goal for next week is to assemble the eDNA and make sure any trimming steps are complete.
 
 -   
