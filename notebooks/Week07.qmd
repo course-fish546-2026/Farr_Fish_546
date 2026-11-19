@@ -1,0 +1,39 @@
+---
+title: "Week 07 — Epigenetics and Methylation"
+author: "Abby Farr"
+date: 19 November 2026
+---
+
+
+## 1. This week's analysis
+
+> Show and tell on epigenetics and methylation. What a genome browser is, what it can show and how it works.  
+
+## 2. Reflection questions
+
+1. What does a genome-browser inspection add that a table alone may not show?
+
+> A genome browser inpection adds a visual that a table does not show. It is a visual representation of the genome with other data on top, it can show where genes are different from the refernce gene.  
+
+2. What is one way methylation results could be over interpreted?
+
+> Methylations results can be over interpreted is by something that is sparcely methylated and we assume that the methylation is being expressed when it really is not.  
+
+3. Which sections now exist in your draft final report, and which one is weakest?
+
+> I have an outline of each section in the final report, no paragraphs have been formed yet. The weakest part of my report is caveats and limitations, I am not sure what to put there yet.  
+
+
+## 3. Project progress
+
+> I have not done a lot of work on the projet this week but I have looked at the taxa in that were represented in the graphic.   
+
+## 4. Where I'm stuck
+
+> None
+
+## 5. Next week
+
+> > This next week I want to get a mostly finsihed paper for my final project  
+
+- 
