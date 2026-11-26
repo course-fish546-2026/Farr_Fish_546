@@ -353,23 +353,24 @@ taxa_clean
 
 2. Why are negative controls essential in eDNA metabarcoding, and what is the equivalent in your own project?
 
->
+> Negative controls are important for eDNA metabarcoding because it can help reduce the amount of false positives that come through during sequencing. 
 
 3. What caveat would you include before making a strong ecological claim from read counts?
 
->
+> Some caveats I would include before making a strong ecological claim from read counts is look at the data and just see what the data looks like and see if I notice anything that looks off.  
+
 
 ## 3. Project progress
 
-<!-- What moved this week, with links to commits, files, or figures. -->
+> This week I was able to create a taxonomy table and a summary taxonomy table. 
 
 ## 4. Where I'm stuck
 
-<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+> I am wondering how much information I have to put in the information section, the data is not mine so I only have a limited amount of information to work with.  
 
 ## 5. Next week
 
-<!-- One to three concrete, one-week-sized goals. -->
+> Next week I would like to have the ouline finished and maybe more of a final draft than an outline. 
 
 - 
 
