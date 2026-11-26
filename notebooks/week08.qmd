@@ -1,0 +1,405 @@
+---
+title: "Week 08 — eDNA Metabarcoding"
+author: "Abby Farr"
+date: 25 November 2026
+---
+
+<!--
+Before you push, check:
+  [ ] this .qmd AND its rendered .html are both committed
+  [ ] rendered from a clean session (Session > Restart R, then Render)
+  [ ] paths are relative, not absolute: from notebooks/, use ../ (e.g. ../output/weekNN/)
+  [ ] tables and figures are saved under output/weekNN/, not only printed here
+  [ ] nothing under data/raw/ is committed
+  [ ] software, platform, and container/environment are named
+  [ ] the commit link is posted as a comment on your Project Proposal issue
+Rubric: https://sr320.github.io/course-fish546-2026/how-we-work.html#weekly-entry-rubric
+-->
+
+## 1. This week's analysis
+
+```{bash}
+mkdir -p ../output/eDNA_mapping
+cd ../output/eDNA_mapping
+
+raw=$(realpath ../../data/raw)
+
+# manifest: sample name, R1 path, R2 path
+printf "sample-id\tforward-absolute-filepath\treverse-absolute-filepath\n" > manifest.tsv
+
+
+for sample in Site1J_S99 Site1L_S101 Site1U_S114 Site1a_S83 Site1aa_S130 Site1b_S84 Site1bb_S139 Site1c_S85 Site1cc_S140 Site1d_S86 Site1dd_S141 Site1e_S91 Site1ee_S142 Site1f_S92 Site1g_S93 Site1h_S94 Site1k_S100 Site1m_S102 Site1n_S103 Site1o_S104 Site1p_S105 Site1q_S106 Site1r_S111 Site1s_S112 Site1t_S113 Site1v_S117 Site1w_S118 Site1x_S119 Site1y_S120 Site1z_S129 Site5J_S107 Site5L_S109 Site5a_S87 Site5aa_S132 Site5b_S88 Site5bb_S133 Site5c_S89 Site5cc_S134 Site5d_S90 Site5dd_S135 Site5e_S95 Site5ee_S136 Site5f_S96 Site5ff_S137 Site5g_S97 Site5gg_S138 Site5h_S98 Site5k_S108 Site5m_S110 Site5n_S115 Site5o_S116 Site5p_S121 Site5q_S122 Site5r_S123 Site5s_S124 Site5u_S126 Site5v_S127 Site5w_S128 Site5z_S131; do
+  printf "%s\t%s\t%s\n" \
+    "$sample" \
+    "${raw}/Yell_July18_${sample}_R1_001.fastq.gz" \
+    "${raw}/Yell_July18_${sample}_R2_001.fastq.gz" >> manifest.tsv
+done
+
+# metadata: sample name, site
+printf "sample-id\tsite\n"          > sample-metadata.tsv
+
+printf "Site1J_S99\tSite1\n"       >> sample-metadata.tsv
+printf "Site1L_S101\tSite1\n"       >> sample-metadata.tsv
+printf "Site1U_S114\tSite1\n"       >> sample-metadata.tsv
+printf "Site1a_S83\tSite1\n"       >> sample-metadata.tsv
+printf "Site1aa_S130\tSite1\n"       >> sample-metadata.tsv
+printf "Site1b_S84\tSite1\n"       >> sample-metadata.tsv
+printf "Site1bb_S139\tSite1\n"       >> sample-metadata.tsv
+printf "Site1cc_S140\tSite1\n"       >> sample-metadata.tsv
+printf "Site1c_S85\tSite1\n"       >> sample-metadata.tsv
+printf "Site1d_S86\tSite1\n"       >> sample-metadata.tsv
+printf "Site1dd_S141\tSite1\n"       >> sample-metadata.tsv
+printf "Site1e_S91\tSite1\n"       >> sample-metadata.tsv
+printf "Site1ee_S142\tSite1\n"       >> sample-metadata.tsv
+printf "Site1f_S92\tSite1\n"       >> sample-metadata.tsv
+printf "Site1g_S93\tSite1\n"       >> sample-metadata.tsv
+printf "Site1h_S94\tSite1\n"       >> sample-metadata.tsv
+printf "Site1k_S100\tSite1\n"       >> sample-metadata.tsv
+printf "Site1m_S102\tSite1\n"       >> sample-metadata.tsv
+printf "Site1n_S103\tSite1\n"       >> sample-metadata.tsv
+printf "Site1o_S104\tSite1\n"       >> sample-metadata.tsv
+printf "Site1p_S105\tSite1\n"       >> sample-metadata.tsv
+printf "Site1q_S106\tSite1\n"       >> sample-metadata.tsv
+printf "Site1r_S111\tSite1\n"       >> sample-metadata.tsv
+printf "Site1s_S112\tSite1\n"       >> sample-metadata.tsv
+printf "Site1t_S113\tSite1\n"       >> sample-metadata.tsv
+printf "Site1v_S117\tSite1\n"       >> sample-metadata.tsv
+printf "Site1w_S118\tSite1\n"       >> sample-metadata.tsv
+printf "Site1x_S119\tSite1\n"       >> sample-metadata.tsv
+printf "Site1y_S120\tSite1\n"       >> sample-metadata.tsv
+printf "Site1z_S129\tSite1\n"       >> sample-metadata.tsv
+printf "Site5J_S107\tSite5\n"       >> sample-metadata.tsv
+printf "Site5L_S109\tSite5\n"       >> sample-metadata.tsv
+printf "Site5a_S87\tSite5\n"       >> sample-metadata.tsv
+printf "Site5aa_S132\tSite5\n"       >> sample-metadata.tsv
+printf "Site5b_S88\tSite5\n"       >> sample-metadata.tsv
+printf "Site5bb_S133\tSite5\n"       >> sample-metadata.tsv
+printf "Site5c_S89\tSite5\n"       >> sample-metadata.tsv
+printf "Site5cc_S134\tSite5\n"       >> sample-metadata.tsv
+printf "Site5d_S90\tSite5\n"       >> sample-metadata.tsv
+printf "Site5dd_S135\tSite5\n"       >> sample-metadata.tsv
+printf "Site5e_S95\tSite5\n"       >> sample-metadata.tsv
+printf "Site5ee_S136\tSite5\n"       >> sample-metadata.tsv
+printf "Site5f_S96\tSite5\n"       >> sample-metadata.tsv
+printf "Site5ff_S137\tSite5\n"       >> sample-metadata.tsv
+printf "Site5g_S97\tSite5\n"       >> sample-metadata.tsv
+printf "Site5gg_S138\tSite5\n"       >> sample-metadata.tsv
+printf "Site5h_S98\tSite5\n"       >> sample-metadata.tsv
+printf "Site5k_S108\tSite5\n"       >> sample-metadata.tsv
+printf "Site5m_S110\tSite5\n"       >> sample-metadata.tsv
+printf "Site5n_S115\tSite5\n"       >> sample-metadata.tsv
+printf "Site5o_S116\tSite5\n"       >> sample-metadata.tsv
+printf "Site5p_S121\tSite5\n"       >> sample-metadata.tsv
+printf "Site5q_S122\tSite5\n"       >> sample-metadata.tsv
+printf "Site5r_S123\tSite5\n"       >> sample-metadata.tsv
+printf "Site5s_S124\tSite5\n"       >> sample-metadata.tsv
+printf "Site5u_S126\tSite5\n"       >> sample-metadata.tsv
+printf "Site5v_S127\tSite5\n"       >> sample-metadata.tsv
+printf "Site5w_S128\tSite5\n"       >> sample-metadata.tsv
+printf "Site5z_S131\tSite5\n"       >> sample-metadata.tsv
+
+
+cat manifest.tsv
+cat sample-metadata.tsv
+```
+
+
+
+# Import reads onto QIIM 2
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime tools import \
+  --type 'SampleData[PairedEndSequencesWithQuality]' \
+  --input-path manifest.tsv \
+  --input-format PairedEndFastqManifestPhred33V2 \
+  --output-path demux.qza
+```
+
+
+# Check read quality
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime demux summarize \
+  --i-data demux.qza \
+  --o-visualization demux.qzv
+```
+
+
+# Remove primers
+
+--p-front-f: the primer at the start of R1. ^ means “at the very start of the read”
+--p-front-r: the primer at the start of R2
+The part after ... is the other primer, flipped (reverse complement). The V9 region is short, so a read often runs past the end of it into the other primer. When that happens, cutadapt cuts off that primer and everything after it. ;optional means the read is kept even if this second primer isn’t there
+--p-discard-untrimmed: throw away reads without the V9 primers
+--p-nextseq-trim 20: trim low-quality bases from the read ends (a fix for the NextSeq sequencer)
+--p-minimum-length 50: drop reads shorter than 50 bases after trimming
+
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime cutadapt trim-paired \
+  --i-demultiplexed-sequences demux.qza \
+  --p-front-f "^GTACACACCGCCCGTC...GTAGGTGAACCTGCAGAAGGATCA;optional" \
+  --p-front-r "^TGATCCTTCTGCAGGTTCACCTAC...GACGGGCGGTGTGTAC;optional" \
+  --p-discard-untrimmed \
+  --p-nextseq-trim 20 \
+  --p-minimum-length 50 \
+  --p-cores 8 \
+  --o-trimmed-sequences V9-demux.qza \
+  --o-stats V9-cutadapt-stats.qza
+```
+
+
+
+
+# Clean up the reads with DADA2
+
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime dada2 denoise-paired \
+  --i-demultiplexed-seqs V9-demux.qza \
+  --p-trunc-len-f 0 \
+  --p-trunc-len-r 0 \
+  --p-n-threads 16 \
+  --o-table V9-table.qza \
+  --o-representative-sequences V9-rep-seqs.qza \
+  --o-denoising-stats V9-dada2-stats.qza \
+  --o-base-transition-stats V9-dada2-error-model.qza
+```
+
+
+Turn the DADA2 stats into a report you can view. It shows how many reads were kept at each step (input → filtered → denoised → merged → non-chimeric).
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime metadata tabulate \
+  --m-input-file V9-dada2-stats.qza \
+  --o-visualization V9-dada2-stats.qzv
+```
+
+
+
+# 6. Download a reference database (PR2)
+
+To put a name on each ASV, we compare it with a reference database: DNA sequences from known organisms. For 18S we use PR2. The rescript plugin downloads it and converts it to QIIME 2 format.
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+mkdir -p ../data/species_reference
+cd ../data/species_reference
+
+if [ ! -f pr2-seqs.qza ]; then
+  qiime rescript get-pr2-data \
+    --o-pr2-sequences pr2-seqs.qza \
+    --o-pr2-taxonomy pr2-taxonomy.qza
+fi
+```
+
+
+
+
+# 7. Name each ASV (assign taxonomy)
+
+*vsearch* compares each ASV with the PR2 sequences. For each ASV it finds up to 10 reference sequences that are at least 90% identical, and gives the ASV the part of their names they mostly agree on.
+
+--p-perc-identity 0.9: a reference must be at least 90% identical to count as a match
+--p-maxrejects 100: stop searching after 100 non-matches (much faster, almost the same result)
+
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime feature-classifier classify-consensus-vsearch \
+  --i-query V9-rep-seqs.qza \
+  --i-reference-reads ../../data/species_reference/pr2-seqs.qza \
+  --i-reference-taxonomy ../../data/species_reference/pr2-taxonomy.qza \
+  --p-perc-identity 0.9 \
+  --p-maxrejects 100 \
+  --p-threads 16 \
+  --o-classification V9-taxonomy.qza \
+  --o-search-results V9-vsearch-hits.qza
+```
+
+
+#8. Make a Barplot  
+
+change the taxonomic level (e.g. level 4 = class, level 5 = order)
+sort samples by site to compare Site 1 and Site 5
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime taxa barplot \
+  --i-table V9-table.qza \
+  --i-taxonomy V9-taxonomy.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --o-visualization V9-taxa-barplot.qzv
+```
+
+
+# Make a table
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime tools export \
+  --input-path V9-taxonomy.qza \
+  --output-path taxonomy_export
+  
+  
+```
+
+
+
+# Make a table
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime tools export \
+  --input-path V9-taxonomy.qza \
+  --output-path taxonomy_export
+  
+  
+```
+
+
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+```
+
+
+
+```{r}
+
+getwd()
+setwd("/home/shared/8TB_HDD_03/abigaylf/GitHub/Farr_Fish_546")
+
+taxa <- read_tsv("output/eDNA_mapping/taxonomy_export/taxonomy.tsv")
+head(taxa)
+
+```
+
+
+
+```{r}
+taxonomy <- taxa %>%
+  separate(
+    Taxon,
+    into = c("Kingdom",
+             "Phylum",
+             "Class",
+             "Order",
+             "Family",
+             "Genus",
+             "Species"),
+    sep = ";",
+    fill = "right"
+  )
+
+taxonomy
+
+```
+
+
+```{r}
+
+taxa_clean <- taxonomy %>%
+  mutate(across(
+    Kingdom:Species,
+    ~ gsub("D_[0-9]+__", "", .x)
+  ))
+
+taxa_clean
+
+```
+
+
+
+## 2. Reflection questions
+
+1. How does marker choice affect what organisms can be detected?
+
+> The marker choice affects what organisim is detected because each one has a target group it is related to. Each of these different target groups are targeting different species groups.  
+
+2. Why are negative controls essential in eDNA metabarcoding, and what is the equivalent in your own project?
+
+>
+
+3. What caveat would you include before making a strong ecological claim from read counts?
+
+>
+
+## 3. Project progress
+
+<!-- What moved this week, with links to commits, files, or figures. -->
+
+## 4. Where I'm stuck
+
+<!-- Specific problems, what you tried, and any linked Help Request. Or "none". -->
+
+## 5. Next week
+
+<!-- One to three concrete, one-week-sized goals. -->
+
+- 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

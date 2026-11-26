@@ -335,12 +335,85 @@ ggplot(long, aes(x = sample, y = percent, fill = taxon)) +
 
 
 
+# Make a table
+
+```{bash}
+source /opt/anaconda/anaconda3/etc/profile.d/conda.sh
+conda activate qiime2-2026.7
+cd ../output/eDNA_mapping
+
+qiime tools export \
+  --input-path V9-taxonomy.qza \
+  --output-path taxonomy_export
+  
+  
+```
+
+
+```{r}
+library(readr)
+library(dplyr)
+library(tidyr)
+```
 
 
 
+```{r}
+
+getwd()
+setwd("/home/shared/8TB_HDD_03/abigaylf/GitHub/Farr_Fish_546")
+
+taxa <- read_tsv("output/eDNA_mapping/taxonomy_export/taxonomy.tsv")
+head(taxa)
+
+```
 
 
 
+```{r}
+taxonomy <- taxa %>%
+  separate(
+    Taxon,
+    into = c("Kingdom",
+             "Phylum",
+             "Class",
+             "Order",
+             "Family",
+             "Genus",
+             "Species"),
+    sep = ";",
+    fill = "right"
+  )
+
+taxonomy
+
+```
+
+
+```{r}
+
+taxa_clean <- taxonomy %>%
+  mutate(across(
+    Kingdom:Species,
+    ~ gsub("D_[0-9]+__", "", .x)
+  ))
+
+taxa_clean
+
+```
+
+
+
+# Summary Table 
+
+```{r}
+
+family_summary <- taxa_clean %>%
+  count(Family, sort = TRUE)
+
+family_summary
+
+```
 
 
 
