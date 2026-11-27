@@ -343,6 +343,17 @@ taxa_clean
 
 ```
 
+# What goes in notebook entery
+
+
+1. Code and commentary for each step. A short platform note: that it ran on Raven, the number of threads used, and the versions of the main tools (cutadapt --version, packageVersion("dada2")).
+
+> Run on raven, packageVersion("dada2")  
+
+
+4. A caveats paragraph: given your controls and marker or data type, how confident are you in the detections?
+
+> I am confident in my detections because the markers used were for broad eukaryotes and metazoan invertebrates which covers a variety of species that would be found in the water.  
 
 
 ## 2. Reflection questions
